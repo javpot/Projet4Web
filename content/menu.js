@@ -24,32 +24,8 @@ menuItems.querySelectorAll("li").forEach((item) => {
   });
 });
 
-class Meteo {
-  constructor(responseOpenWeatherMap) {
-    const meteo = responseOpenWeatherMap;
-    this.temperature = meteo.main.temp;
-    this.ville = meteo.name;
-    this.date = new Date();
-    const iconCode = meteo.weather[0].icon;
-    this.url = this.getIconImage(iconCode);
-  }
-
-  getDOMElement() {
-    const elt = document.createElement("div");
-    elt.classList = "meteoSnippet";
-    const tempPara = document.createElement("p");
-    tempPara.innerHTML = "Temperature: " + this.temperature + "C";
-    const namePara = document.createElement("p");
-    namePara.innerHTML = this.ville;
-    const img = document.createElement("img");
-    img.src = this.url;
-    elt.appendChild(namePara);
-    elt.appendChild(tempPara);
-    elt.appendChild(img);
-    return elt;
-  }
-
-  getIconImage(code) {
-    return `http://openweathermap.org/img/wn/${code}@2x.png`;
-  }
-}
+document.getElementById("addUser").addEventListener("click", function (event) {
+  event.preventDefault();
+  const category = this.textContent.trim();
+  getHTMLfile(category);
+});
