@@ -1,2 +1,44 @@
-hello
-world
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Responsive</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* Styles pour rendre la page responsive */
+        @media only screen and (max-width: 600px) {
+            /* Styles pour les écrans de taille inférieure à 600px */
+            /* Ajoutez vos styles ici selon vos besoins */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <p class="mesContacts">Mes Contacts</p>
+        <img class="addUser" src="img/icons8-add-male-user-35.png" alt="">
+    </div>
+    <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+    <label for="openSidebarMenu" class="sidebarIconToggle">
+        <div class="spinner diagonal part-1"></div>
+        <div class="spinner horizontal"></div>
+        <div class="spinner diagonal part-2"></div>
+    </label>
+    <div id="sidebarMenu">
+        <ul class="sidebarMenuInner">
+            <li class="containerSearch"><input type="text"> <img src="img/icons8-loupe-35-2.png" alt=""></li>
+
+        </ul>
+    </div>
+    <div id='center' class="main center">
+        <div class="mainInner">
+            <div>PURE C</div>
+        </div>
+
+    </div>
+</body>
+
+</html>
