@@ -41,19 +41,19 @@ body {
   margin-top: 60px;
 }
 .content {
-  display: table;
+  display: block;
   height: 100%;
   width: 100%;
   text-align: center;
 }
 .content div {
-  display: table-cell;
+  display: inline-block;
   vertical-align: middle;
-  font-size: 3em;
   font-weight: bold;
   letter-spacing: 1.25px;
 }
 #sidebarMenu {
+  z-index: 9999999999;
   height: 100%;
   position: fixed;
   left: 0;

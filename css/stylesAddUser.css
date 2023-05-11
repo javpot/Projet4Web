@@ -1,19 +1,13 @@
-html {
-  width: 50%;
-}
-
 body {
     font-family: "Josefin Sans", sans-serif;
   }
   
   .clearfix {
     display: block;
-    content: "";
     clear: both;
   }
   .wrapper {
     position: relative;
-    min-height: 450px;
   }
   .color1 {
     color: #e91e63;
@@ -22,7 +16,7 @@ body {
   .item-container {
     border: 5px solid #fff;
     padding: 12px;
-    background: #0000008a;
+    background: rgb(60, 60, 60);
     transition: all 0.2s linear;
     border-radius: 5px;
   }
@@ -41,7 +35,6 @@ body {
     float: left;
     padding: 4px;
     color: #fff;
-    z-index: 99999;
   }
   
   .icon img {
