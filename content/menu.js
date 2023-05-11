@@ -8,46 +8,11 @@ function getHTMLfile(category) {
     .then((data) => {
       const categoryContent = document.getElementById("content");
       categoryContent.innerHTML = data;
-
-
-      loadMeteo();
     })
     .catch((error) => console.error(error));
 }
 
-
-function loadMeteo() {
-  document.querySelector(".meteo").innerHTML = "";
-  let cle = "1ac298995ec2f7c641fb3806216c0c04";
-  let url =
-    "http://api.openweathermap.org/data/2.5/weather?q=Montreal,ca&units=metric&appid=" +
-    cle;
-  fetch(url)
-    .then((response) => response.json())
-    .then((data) => {
-      const meteoData = new Meteo(data);
-      const meteoSnippet = meteoData.getDOMElement();
-      document.querySelector(".meteo").appendChild(meteoSnippet);
-    })
-    .catch((error) => console.error(error));
-}
 // code qui recherche la meteo selon la ville ecrite a revoir
-function loadMeteoNomVille() {
-  document.querySelector(".meteo").innerHTML = "";
-  let searchContent = document.getElementById("searchContent").value;
-  let cle = "1ac298995ec2f7c641fb3806216c0c04";
-  let url ="http://api.openweathermap.org/data/2.5/weather?q=" + searchContent + ",ca&units=metric&appid=" +
-    cle;
-  fetch(url)
-    .then((response) => response.json())
-    .then((data) => {
-      const meteoData = new Meteo(data);
-      const meteoSnippet = meteoData.getDOMElement();
-      document.querySelector(".meteo").appendChild(meteoSnippet);
-      console.log(searchContent);
-    })
-    .catch((error) => console.error(error));
-}
 
 const menuItems = document.querySelector("#menu");
 

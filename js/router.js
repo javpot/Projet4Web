@@ -7,7 +7,7 @@ function routeRequest(request, response) {
 
     switch (pathType) {
         case 'root':
-            fileHandler.sendContent('/content/index.html', response);
+            fileHandler.sendContent('/content/Acceuil.html', response);
             break;
         case 'img':
             fileHandler.sendImage(getImagePath(pathParts), response);
@@ -52,6 +52,3 @@ function send404(response) {
 }
 
 module.exports = { routeRequest };
-
-
-
