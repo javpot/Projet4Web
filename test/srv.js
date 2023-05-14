@@ -10,10 +10,16 @@ app.use(function (req, res, next) {
     next();
 });
 app.use(express.json());
-mongoose.connect("mongodb://127.0.0.1:27017/DB1", { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect("mongodb://127.0.0.1:27017/DB", { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log("Connected to the MongoDB database..."))
     .catch(error => console.log("Failed to connect to the MongoDB database:", error));
 /*
+
+const personneSchema = new mongoose.Schema({
+ nom: String,
+ prenom: String
+});
+
 const PersonneModel = mongoose.model("personne", personneSchema);
 // Ajouter un enregistrement dans la DB (CREATE)
 app.post('/personne', async (request, response) => {
