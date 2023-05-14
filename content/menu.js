@@ -27,3 +27,27 @@ document.getElementById("addUser").addEventListener("click", function (event) {
   console.log(9);
   getHTMLfile("addUser");
 });
+
+MongoClient.connect(url, function(err, client) {
+  if (err) {
+    console.error('Error occurred while connecting to MongoDB:', err);
+    return;
+  }
+
+  console.log('Connected to MongoDB successfully!');
+
+  const db = client.db('<db_name>');
+  const collection = db.collection('<collection_name>');
+
+  const document = { name: 'John Doe', age: 30 };
+  collection.insertOne(document, function(err, result) {
+    if (err) {
+      console.error('Error occurred while inserting document:', err);
+    } else {
+      console.log('Document inserted successfully!');
+      // Perform other database operations if needed
+    }
+
+    client.close(); // Close the connection after all operations are done
+  });
+});
