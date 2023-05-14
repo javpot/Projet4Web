@@ -1,27 +1,62 @@
-<div class="form">
-    <form action="contact" method="POST">
-        <div class="title">Bonjour</div>
-        <div class="subtitle">Ajout de compte</div>
-        <div class="input-container ic1">
-            <input id="firstname" name="prenom" class="input" type="text" placeholder=" " />
-            <div class="cut"></div>
-            <label for="firstname" class="placeholder">First name</label>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Responsive</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <div class="header">
+        <p class="mesContacts">Mes Contacts</p>
+        <a href="#"><img class="addUser" id="addUser" src="img/icons8-add-male-user-35.png" alt=""></img></a>
+    </div>
+    <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+    <label for="openSidebarMenu" class="sidebarIconToggle">
+        <div class="spinner diagonal part-1"></div>
+        <div class="spinner horizontal"></div>
+        <div class="spinner diagonal part-2"></div>
+    </label>
+    <div id="sidebarMenu">
+        <ul class="sidebarMenuInner" id="sidebarMenuInner">
+            <li class="containerSearch"><input type="text"> <img src="img/icons8-loupe-35-2.png" alt=""></li>
+        </ul>
+    </div>
+    <div id='center' class="main center">
+        <div class="content" id="content">
+            <div class="form">
+                <form action="contact" method="POST">
+                    <div class="title">Bonjour</div>
+                    <div class="subtitle">Ajout de compte</div>
+                    <div class="input-container ic1">
+                        <input id="firstname" class="input" type="text" placeholder=" " />
+                        <div class="cut"></div>
+                        <label for="firstname" class="placeholder">First name</label>
+                    </div>
+                    <div class="input-container ic2">
+                        <input id="lastname" class="input" type="text" placeholder=" " />
+                        <div class="cut"></div>
+                        <label for="lastname" class="placeholder">Last name</label>
+                    </div>
+                    <div class="input-container ic2">
+                        <input id="email" class="input" type="text" placeholder=" " />
+                        <div class="cut cut-short"></div>
+                        <label for="email" class="placeholder">Email</label>
+                    </div>
+                    <div class="input-container ic2">
+                        <input id="phone" class="input" type="text" placeholder=" " />
+                        <div class="cut cut-short"></div>
+                        <label for="phone" class="placeholder">Phone</label>
+                    </div>
+                    <input type="submit" class="submit">submit</button>
+                </form>
+            </div>
         </div>
-        <div class="input-container ic2">
-            <input id="lastname" name="nom" class="input" type="text" placeholder=" " />
-            <div class="cut"></div>
-            <label for="lastname" class="placeholder">Last name</label>
-        </div>
-        <div class="input-container ic2">
-            <input id="email" name="email" class="input" type="text" placeholder=" " />
-            <div class="cut cut-short"></div>
-            <label for="email" class="placeholder">Email</label>
-        </div>
-        <div class="input-container ic2">
-            <input id="phone" name="phone" class="input" type="text" placeholder=" " />
-            <div class="cut cut-short"></div>
-            <label for="phone" class="placeholder">Phone</label>
-        </div>
-        <input type="submit" class="submit">submit</button>
-    </form>
-</div>
+    </div>
+    <script src="js"></script>
+</body>
+
+
+</html>
