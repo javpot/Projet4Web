@@ -1,4 +1,5 @@
 const router = require('./js/router');
+const path = require('path');
 const PORT = 6161;
 const express = require('express');
 const mongoose = require("mongoose");
@@ -28,11 +29,25 @@ app.use(function (req, res, next) {
   next();
 });
 app.use(express.json());
+
 mongoose.connect("mongodb://127.0.0.1:27017/DB", { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("Connected to the MongoDB database..."))
   .catch(error => console.log("Failed to connect to the MongoDB database:", error));
 
 const PersonneModel = mongoose.model("personne", personneSchema);
+
+// Create Contact
+app.get("/addContact/", async (request, response) => {
+  console.log("Route GET /addContact/");
+  try {
+    const filePath = path.join(__dirname, '/content/addUser.html');
+    response.sendFile(filePath);
+  }
+  catch (error) {
+    response.status(500).send(error);
+  }
+});
+
 // Ajouter un enregistrement dans la DB (CREATE)
 app.post('/contact', async (request, response) => {
   console.log("Route POST /contact");
@@ -46,6 +61,7 @@ app.post('/contact', async (request, response) => {
     response.status(500).send(error);
   }
 });
+
 // Obtenir la liste des enregistrements contenus dans la DB (READ)
 app.get('/contacts', async (request, response) => {
   console.log("Route GET /contacts");

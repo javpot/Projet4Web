@@ -3,10 +3,11 @@ const fileHandler = require('./fileHandler');
 function routeRequest(request, response) {
     const pathRequest = request.url;
     const pathParts = pathRequest.split('/');
-    const pathType = getPathType(pathParts[1]);
+    const pathType = getPathType(pathParts.at(-1));
 
     switch (pathType) {
         case 'root':
+            console.log(55);
             fileHandler.sendContent('/content/Acceuil.html', response);
             break;
         case 'img':
