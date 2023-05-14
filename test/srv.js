@@ -13,11 +13,11 @@ app.use(express.json());
 mongoose.connect("mongodb://127.0.0.1:27017/DB", { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log("Connected to the MongoDB database..."))
     .catch(error => console.log("Failed to connect to the MongoDB database:", error));
-/*
+
 
 const personneSchema = new mongoose.Schema({
- nom: String,
- prenom: String
+    nom: String,
+    prenom: String
 });
 
 const PersonneModel = mongoose.model("personne", personneSchema);
@@ -86,4 +86,3 @@ app.delete("/personne/:id", async (request, response) => {
 app.listen(port, () => {
     console.log(`Serveur en écoute sur le port ${port}...`);
 });
-*/
