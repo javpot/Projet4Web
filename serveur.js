@@ -29,6 +29,7 @@ app.use(function (req, res, next) {
   next();
 });
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }))
 
 mongoose.connect("mongodb://127.0.0.1:27017/DB", { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("Connected to the MongoDB database..."))
@@ -53,7 +54,7 @@ app.post('/contact', async (request, response) => {
   console.log("Route POST /contact");
   console.log(request.body);
   try {
-    let person = new PersonneModel(request.body);
+    let person = new PersonneModel(request.body.nom, request.body.prenom, request.body.email, request.body.phone);
     let result = await person.save();
     response.send(result);
   }
