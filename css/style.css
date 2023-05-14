@@ -298,9 +298,11 @@ input[type="checkbox"]:checked~.sidebarIconToggle>.diagonal.part-2 {
 }
 
 .mainContainer{
-  height: 40vh;
+  position: absolute;
+  height: 70vh;
   width: 34vw;
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
   background-color: hsl(240, 17%, 21%);
   margin-top: 20px;
   
