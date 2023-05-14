@@ -10,9 +10,9 @@ app.use(function (req, res, next) {
     next();
 });
 app.use(express.json());
-mongoose.connect("mongodb://0.0.0.0:27017/DB1", { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log("Connected to the MongoDB database..."))
-  .catch(error => console.log("Failed to connect to the MongoDB database:", error));
+mongoose.connect("mongodb://127.0.0.1:27017/DB1", { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => console.log("Connected to the MongoDB database..."))
+    .catch(error => console.log("Failed to connect to the MongoDB database:", error));
 /*
 const PersonneModel = mongoose.model("personne", personneSchema);
 // Ajouter un enregistrement dans la DB (CREATE)
