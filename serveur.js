@@ -54,7 +54,7 @@ app.post('/contact', async (request, response) => {
   console.log("Route POST /contact");
   console.log(request.body);
   try {
-    let person = new PersonneModel(request.body.nom, request.body.prenom, request.body.email, request.body.phone);
+    let person = new PersonneModel(request.body);
     let result = await person.save();
     response.send(result);
   }
