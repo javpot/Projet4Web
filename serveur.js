@@ -49,7 +49,7 @@ app.get("/addContact/", async (request, response) => {
   }
 });
 
-// Ajouter un enregistrement dans la DB (CREATE)
+// Ajouter un enregistrement dans la DB (CREATE) fonctionne
 app.post('/contact', async (request, response) => {
   console.log("Route POST /contact");
   console.log(request.body);
@@ -64,7 +64,7 @@ app.post('/contact', async (request, response) => {
   }
 });
 
-// Obtenir la liste des enregistrements contenus dans la DB (READ)
+// Obtenir la liste des enregistrements contenus dans la DB (READ) 
 app.get('/contacts', async (request, response) => {
   console.log("Route GET /contacts");
   try {

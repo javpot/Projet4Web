@@ -296,3 +296,35 @@ input[type="checkbox"]:checked~.sidebarIconToggle>.diagonal.part-2 {
 .submit:active {
   background-color: #06b;
 }
+
+.mainContainer{
+  height: 40vh;
+  width: 34vw;
+  margin: auto;
+  background-color: hsl(240, 17%, 21%);
+  margin-top: 20px;
+  
+}
+
+
+
+.li-contact{
+  margin-top: 15px;
+  width: 80%;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin-left: 6%;
+ 
+ 
+  
+}
+.buttonContact{
+width: 80%;
+border: none;
+box-shadow: #303245;
+background-color: rgba(106, 137, 217, 0.756);
+border-radius: 7px;
+color: antiquewhite;
+
+}
