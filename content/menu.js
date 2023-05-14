@@ -28,7 +28,7 @@ document.getElementById("addUser").addEventListener("click", function (event) {
   getHTMLfile("addUser");
 });
 
-MongoClient.connect(url, function(err, client) {
+MongoClient.connect(url, function (err, client) {
   if (err) {
     console.error('Error occurred while connecting to MongoDB:', err);
     return;
@@ -40,7 +40,7 @@ MongoClient.connect(url, function(err, client) {
   const collection = db.collection('<collection_name>');
 
   const document = { name: 'John Doe', age: 30 };
-  collection.insertOne(document, function(err, result) {
+  collection.insertOne(document, function (err, result) {
     if (err) {
       console.error('Error occurred while inserting document:', err);
     } else {

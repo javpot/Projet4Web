@@ -1,25 +1,27 @@
 @import url("https://fonts.googleapis.com/css?family=Varela+Round");
+
 html,
 body {
   overflow-x: hidden;
-  height: 100%;
   font-family: "Josefin Sans", sans-serif;
   background: #303245;
   padding: 0;
   margin: 0;
 }
 
-.addUser{
-    position: absolute;
-    top: 10px;
-    right: 10px;
+.addUser {
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
-.mesContacts{
-    position: absolute;
-    top: 5px;
-    left: 50px;
-    color:#fff;
+
+.mesContacts {
+  position: absolute;
+  top: 5px;
+  left: 50px;
+  color: #fff;
 }
+
 .header {
   display: block;
   margin: 0 auto;
@@ -32,24 +34,28 @@ body {
   overflow: hidden;
   z-index: 10;
 }
+
 .main {
   margin: 0 auto;
   display: block;
   height: 100%;
   margin-top: 60px;
 }
+
 .content {
   display: block;
   height: 100%;
   width: 100%;
   text-align: center;
 }
+
 .content div {
   display: inline-block;
   vertical-align: middle;
   font-weight: bold;
   letter-spacing: 1.25px;
 }
+
 #sidebarMenu {
   z-index: 9999999999;
   height: 100%;
@@ -61,11 +67,13 @@ body {
   transition: transform 250ms ease-in-out;
   background: rgb(106, 137, 217);
 }
+
 .sidebarMenuInner {
   margin: 0;
   padding: 0;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
+
 .sidebarMenuInner li {
   list-style: none;
   color: #fff;
@@ -75,11 +83,13 @@ body {
   cursor: pointer;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
+
 .sidebarMenuInner li span {
   display: block;
   font-size: 14px;
   color: rgba(255, 255, 255, 0.5);
 }
+
 .sidebarMenuInner li a {
   color: #fff;
   text-transform: uppercase;
@@ -87,7 +97,8 @@ body {
   cursor: pointer;
   text-decoration: none;
 }
-input[type="checkbox"]:checked ~ #sidebarMenu {
+
+input[type="checkbox"]:checked~#sidebarMenu {
   transform: translateX(0);
 }
 
@@ -96,6 +107,7 @@ input[type="checkbox"] {
   box-sizing: border-box;
   display: none;
 }
+
 .sidebarIconToggle {
   transition: all 0.3s;
   box-sizing: border-box;
@@ -109,6 +121,7 @@ input[type="checkbox"] {
   height: 22px;
   width: 22px;
 }
+
 .spinner {
   transition: all 0.3s;
   box-sizing: border-box;
@@ -117,6 +130,7 @@ input[type="checkbox"] {
   width: 100%;
   background-color: #fff;
 }
+
 .horizontal {
   transition: all 0.3s;
   box-sizing: border-box;
@@ -124,12 +138,14 @@ input[type="checkbox"] {
   float: left;
   margin-top: 3px;
 }
+
 .diagonal.part-1 {
   position: relative;
   transition: all 0.3s;
   box-sizing: border-box;
   float: left;
 }
+
 .diagonal.part-2 {
   transition: all 0.3s;
   box-sizing: border-box;
@@ -137,27 +153,30 @@ input[type="checkbox"] {
   float: left;
   margin-top: 3px;
 }
-input[type="checkbox"]:checked ~ .sidebarIconToggle > .horizontal {
+
+input[type="checkbox"]:checked~.sidebarIconToggle>.horizontal {
   transition: all 0.3s;
   box-sizing: border-box;
   opacity: 0;
 }
-input[type="checkbox"]:checked ~ .sidebarIconToggle > .diagonal.part-1 {
+
+input[type="checkbox"]:checked~.sidebarIconToggle>.diagonal.part-1 {
   transition: all 0.3s;
   box-sizing: border-box;
   transform: rotate(135deg);
   margin-top: 8px;
 }
-input[type="checkbox"]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
+
+input[type="checkbox"]:checked~.sidebarIconToggle>.diagonal.part-2 {
   transition: all 0.3s;
   box-sizing: border-box;
   transform: rotate(-135deg);
   margin-top: -9px;
 }
 
-.containerSearch{
-    display: flex;
-    justify-content: space-between;
+.containerSearch {
+  display: flex;
+  justify-content: space-between;
 }
 
 .form {
@@ -229,8 +248,8 @@ input[type="checkbox"]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
   width: 50px;
 }
 
-.input:focus ~ .cut,
-.input:not(:placeholder-shown) ~ .cut {
+.input:focus~.cut,
+.input:not(:placeholder-shown)~.cut {
   transform: translateY(8px);
 }
 
@@ -246,16 +265,16 @@ input[type="checkbox"]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
   top: 20px;
 }
 
-.input:focus ~ .placeholder,
-.input:not(:placeholder-shown) ~ .placeholder {
+.input:focus~.placeholder,
+.input:not(:placeholder-shown)~.placeholder {
   transform: translateY(-30px) translateX(10px) scale(0.75);
 }
 
-.input:not(:placeholder-shown) ~ .placeholder {
+.input:not(:placeholder-shown)~.placeholder {
   color: #808097;
 }
 
-.input:focus ~ .placeholder {
+.input:focus~.placeholder {
   color: #dc2f55;
 }
 
