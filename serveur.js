@@ -56,7 +56,8 @@ app.post('/contact', async (request, response) => {
   try {
     let person = new PersonneModel(request.body);
     let result = await person.save();
-    response.send(result);
+    const filePath = path.join(__dirname, '/content/Acceuil.html')
+    response.sendFile(filePath);
   }
   catch (error) {
     response.status(500).send(error);
