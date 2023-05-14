@@ -1,18 +1,23 @@
-const http = require("http");
 const router = require('./js/router');
 const PORT = 6161;
 const express = require('express');
 const mongoose = require("mongoose");
 const app = express();
+const personneSchema = new mongoose.Schema({
+  nom: String,
+  prenom: String,
+  email: String,
+  phone: String,
+  mobile: String,
+  entreprise: String,
+  adresse: String
+});
 
-const server = http.createServer((request, response) => {
+app.use(express.static(__dirname + '/'));
+
+app.get('/', (request, response) => {
   console.log(`request recu pour  ${request.url}`);
   router.routeRequest(request, response);
-}
-);
-
-server.listen(PORT, () => {
-  console.log(`Le Serveur ecoute ${PORT}`);
 });
 
 app.use(function (req, res, next) {
@@ -26,17 +31,6 @@ app.use(express.json());
 mongoose.connect("mongodb://127.0.0.1:27017/DB", { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("Connected to the MongoDB database..."))
   .catch(error => console.log("Failed to connect to the MongoDB database:", error));
-
-
-const personneSchema = new mongoose.Schema({
-  nom: String,
-  prenom: String,
-  email: String,
-  phone: String,
-  mobile: String,
-  entreprise: String,
-  adresse: String
-});
 
 const PersonneModel = mongoose.model("personne", personneSchema);
 // Ajouter un enregistrement dans la DB (CREATE)
@@ -100,4 +94,8 @@ app.delete("/contact/:id", async (request, response) => {
   catch (error) {
     response.status(500).send(error);
   }
+});
+
+app.listen(PORT, () => {
+  console.log(`Serveur en écoute sur le port ${PORT}...`);
 });
