@@ -40,7 +40,7 @@ const PersonneModel = mongoose.model("personne", personneSchema);
 app.get("/addContact/", async (request, response) => {
   console.log("Route GET /addContact/");
   try {
-    const filePath = path.join(__dirname, '/content/addUser.html');
+    const filePath = path.join(__dirname, '/content/addContact.html')
     response.sendFile(filePath);
   }
   catch (error) {
