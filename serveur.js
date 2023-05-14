@@ -35,8 +35,8 @@ const personneSchema = new mongoose.Schema({
 
 const PersonneModel = mongoose.model("personne", personneSchema);
 // Ajouter un enregistrement dans la DB (CREATE)
-app.post('/personne', async (request, response) => {
-  console.log("Route POST /personne");
+app.post('/contact', async (request, response) => {
+  console.log("Route POST /contact");
   console.log(request.body);
   try {
       let person = new PersonneModel(request.body);
@@ -48,8 +48,8 @@ app.post('/personne', async (request, response) => {
   }
 });
 // Obtenir la liste des enregistrements contenus dans la DB (READ)
-app.get('/personnes', async (request, response) => {
-  console.log("Route GET /personnes");
+app.get('/contacts', async (request, response) => {
+  console.log("Route GET /contacts");
   try {
       let result = await PersonneModel.find().exec();
       response.send(result);
@@ -59,8 +59,8 @@ app.get('/personnes', async (request, response) => {
   }
 });
 // Obtenir un enregistrement en particulier dans la DB (READ)
-app.get("/personne/:id", async (request, response) => {
-  console.log("Route GET /personne/:id");
+app.get("/contact/:id", async (request, response) => {
+  console.log("Route GET /contact/:id");
   try {
       let person = await PersonneModel.findById(request.params.id).exec();
       response.send(person);
@@ -70,8 +70,8 @@ app.get("/personne/:id", async (request, response) => {
   }
 });
 // Mettre à jour un enregistrement dans la DB (UPDATE)
-app.put("/personne/:id", async (request, response) => {
-  console.log("Route PUT /personne/:id");
+app.put("/contact/:id", async (request, response) => {
+  console.log("Route PUT /contact/:id");
   console.log(request.body);
   try {
       let person = await PersonneModel.findById(request.params.id).exec();
@@ -84,7 +84,7 @@ app.put("/personne/:id", async (request, response) => {
   }
 });
 // Effacer un enregistrement (EFFACER)
-app.delete("/personne/:id", async (request, response) => {
+app.delete("/contact/:id", async (request, response) => {
   try {
       let result = await PersonneModel.deleteOne({
           _id:
