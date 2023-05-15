@@ -5,6 +5,7 @@ const express = require('express');
 const mongoose = require("mongoose");
 const app = express();
 const personneSchema = new mongoose.Schema({
+  id: String,
   nom: String,
   prenom: String,
   email: String,
