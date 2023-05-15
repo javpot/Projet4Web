@@ -117,10 +117,10 @@ app.put("/contactUpdate/:id", async (request, response) => {
 });
 
 // Effacer un enregistrement (EFFACER)
-app.delete("/contactDelete/:id", async (request, response) => {
+app.delete("/contactDelete/:phone", async (request, response) => {
   try {
     let result = await PersonneModel.deleteOne({
-      _id: request.params.id
+      phone: request.params.phone
     }).exec();
     response.send(result);
   }

@@ -29,18 +29,30 @@ document.addEventListener("DOMContentLoaded", function () {
         button.addEventListener("click", () => {
           ul.style.display = "none"
           let urlSinglePerson = document.URL + "contact/" + list.phone
+          let urlDeletePerson = document.URL + "contactDelete/" + list.phone
           singlePersonDiv.style.display = "block"
-          fetch(urlSinglePerson, {
-            method: 'GET'
 
-          }).then(res => res.json())
+          fetch(urlSinglePerson).then(res => res.json())
             .then(json => {
               singlePersonDiv.append(document.createElement('p').innerHTML = json.prenom + " " + json.nom);
               singlePersonDiv.append(document.createElement('p').innerHTML = json.telephone + " " + json.mobile);
               singlePersonDiv.append(document.createElement('p').innerHTML = "\n" + json.entreprise);
 
+              let supprimer = document.createElement('button');
               let button = document.createElement('button');
+
               button.innerHTML = 'Close'
+              supprimer.innerHTML = 'Supprimer'
+
+              supprimer.addEventListener("click", function() {
+                fetch(urlDeletePerson, {method: "DELETE"})
+                .then(res => res.text())
+                .then(res => {
+                  console.log(res)
+                  this.location.reload()
+                })
+              })
+
               button.addEventListener("click", function () {
                 ul.style.display = "block"
                 singlePersonDiv.style.display = "none"
