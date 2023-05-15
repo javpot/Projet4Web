@@ -325,6 +325,10 @@ input[type="checkbox"]:checked~.sidebarIconToggle>.diagonal.part-2 {
   color: antiquewhite;
 }
 
+/*
+                      DETAILED CONTACT STARTS HERE
+*/
+
 h1 {
 	font-family: "Poppins", sans-serif, "arial";
 	font-weight: 600;
@@ -395,7 +399,6 @@ textarea:focus ~ span {
 }
 
 .submit-btn {
-	float: right;
 	padding: 7px 35px;
 	border-radius: 2px;
 	display: inline-block;
