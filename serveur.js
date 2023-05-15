@@ -64,7 +64,7 @@ app.post('/contact', async (request, response) => {
   }
 });
 
-app.get("/all-contact", (res,req)=>{
+app.get("/all-contact", (req,res)=>{
   PersonneModel.find().then(result =>{res.send(result)})     .catch(error=>{         console.log("error")     })
 })
 
