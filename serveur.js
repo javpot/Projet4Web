@@ -17,13 +17,21 @@ const PersonneModel = mongoose.model("personne", personneSchema);
 
 app.use(express.static(__dirname + '/'));
 app.use(express.json());
+app.use("/css", express.static('css'));
 app.use("/content/menu.js", express.static('js'));
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/', async (request, response) => {
-  console.log(`request recu pour  ${request.url}`);
-  router.routeRequest(request, response);
-});
+       console.log(request.url)
+       console.log(request.body)
+
+       const indexPath = path.join(__dirname,"../content/Acceuil.html")
+       if(req.url =="/"){
+           res.sendFile(indexPath)
+       }
+
+   }
+);
 
 app.use(function (req, res, next) {
   res.setHeader("Access-Control-Allow-Origin", "*");
