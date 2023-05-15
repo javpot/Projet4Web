@@ -74,7 +74,6 @@ function sendContent(requestedPath, response) {
 }
 
 function sendJson(json, parent) {
-    console.log(json);
     var ul = document.getElementById(parent);
     console.log(ul);
 
