@@ -8,7 +8,8 @@ document.addEventListener("DOMContentLoaded", function () {
     .then((response) => response.json())
     .then((json) => {
       console.log("HELLO from albani!!!!!!!!!!!!!!" + json);
-      var ul = document.getElementById("ul-contact");
+      let ul = document.getElementById("ul-contact");
+      let singlePersonDiv = document.getElementById("singlePersonDiv")
       console.log(ul);
 
       json.forEach(list => {
@@ -24,17 +25,31 @@ document.addEventListener("DOMContentLoaded", function () {
 
         button.append(document.createElement('p').innerHTML = list.prenom + " " + list.nom);
         button.append(document.createElement('p').innerHTML = "\n" + list.entreprise);
-        
-        button.addEventListener("click", function() {
-          let urlSinglePerson = document.URL +"contact/"+list._id
-          fetch(urlSinglePerson).then(res => res.json())
-          .then(json =>{
 
-            let singlePersonDiv = doucment.getElementById("singlePersonDiv")
-            singlePersonDiv.append(document.createElement('p').innerHTML = json.prenom + " " + json.nom);
-            singlePersonDiv.append(document.createElement('p').innerHTML = json.telephone + " " + json.mobile);
-            singlePersonDiv.append(document.createElement('p').innerHTML = "\n" + json.entreprise);
-          })
+        button.addEventListener("click", () => {
+          ul.style.display = "none"
+          let urlSinglePerson = document.URL + "contact/" + list.phone
+          singlePersonDiv.style.display = "block"
+          fetch(urlSinglePerson, {
+            method: 'GET'
+
+          }).then(res => res.json())
+            .then(json => {
+              singlePersonDiv.append(document.createElement('p').innerHTML = json.prenom + " " + json.nom);
+              singlePersonDiv.append(document.createElement('p').innerHTML = json.telephone + " " + json.mobile);
+              singlePersonDiv.append(document.createElement('p').innerHTML = "\n" + json.entreprise);
+
+              let button = document.createElement('button');
+              button.innerHTML = 'Close'
+              button.addEventListener("click", function () {
+                ul.style.display = "block"
+                singlePersonDiv.style.display = "none"
+                while (singlePersonDiv.firstChild) {
+                  singlePersonDiv.removeChild(singlePersonDiv.lastChild);
+                }
+              })
+              singlePersonDiv.append(button)
+            })
         })
         console.log(list.prenom, list.nom, list.entreprise);
       });

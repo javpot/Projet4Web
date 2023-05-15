@@ -24,15 +24,15 @@ app.use("/content/menu.js", express.static('js'));
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/', async (request, response) => {
-       console.log(request.url)
-       console.log(request.body)
+  console.log(request.url)
+  console.log(request.body)
 
-       const indexPath = path.join(__dirname,"/content/Acceuil.html")
-       if(request.url =="/"){
-           response.sendFile(indexPath)
-       }
+  const indexPath = path.join(__dirname, "/content/Acceuil.html")
+  if (request.url == "/") {
+    response.sendFile(indexPath)
+  }
 
-   }
+}
 );
 
 app.use(function (req, res, next) {
@@ -41,7 +41,7 @@ app.use(function (req, res, next) {
   res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   res.setHeader('Access-Control-Allow-Credentials', true);
   next();
- });
+});
 
 mongoose.connect("mongodb://localhost:27017/DB", { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("Connected to the MongoDB database..."))
@@ -74,8 +74,8 @@ app.post('/contact', async (request, response) => {
   }
 });
 
-app.get("/all-contact1", (req,res)=>{
-  PersonneModel.find().then(result =>{res.send(result)})     .catch(error=>{         console.log("error")     })
+app.get("/all-contact1", (req, res) => {
+  PersonneModel.find().then(result => { res.send(result) }).catch(error => { console.log("error") })
 })
 
 // Obtenir la liste des enregistrements contenus dans la DB (READ)
@@ -90,10 +90,10 @@ app.get('/all-contact', async (request, response) => {
 });
 
 // Obtenir un enregistrement en particulier dans la DB (READ)
-app.get("/contact/:_id", async (request, response) => {
+app.get("/contact/:phone", async (request, response) => {
   console.log("Route GET /contact/:_id");
   try {
-    let result = await PersonneModel.findOne({_id:request.params._id}).exec();
+    let result = await PersonneModel.findOne({ phone: request.params.phone }).exec();
     response.send(result);
   }
   catch (error) {
