@@ -63,6 +63,10 @@ app.post('/contact', async (request, response) => {
   }
 });
 
+app.get("/all-contact", (res,req)=>{
+  PersonneModel.find().then(result =>{res.send(result)})     .catch(error=>{         console.log("error")     })
+})
+
 // Obtenir la liste des enregistrements contenus dans la DB (READ)
 app.get('/contacts', async (request, response) => {
   console.log("Route GET /contacts");
