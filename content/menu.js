@@ -44,8 +44,8 @@ document.addEventListener("DOMContentLoaded", function () {
             var button = document.createElement('button');
             button.setAttribute('class', 'buttonContact');
     
-            button.appendChild(document.createElement('p').innerHTML(list.Prenom + " " + list.Nom));
-            button.appendChild(document.createElement('p').innerHTML(list.entreprise));
+            button.appendChild(document.createElement('p').innerHTML = list.Prenom + " " + list.Nom);
+            button.appendChild(document.createElement('p').innerHTML = list.entreprise);
             li.appendChild(button);
             ul.appendChild(li);
             console.log(list.Prenom, list.Nom, list.entreprise);
