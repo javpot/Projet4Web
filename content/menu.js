@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function(){
   console.log("///////////////////////////////////////////////////////////////////////////////////////");
   const url = document.URL;
   //const url = `../content/${category}.html`;
-  url+="contacts"
+  url+="all-contact";
   fetch(url)
     .then((response) => response.json())
     .then((json) => {
