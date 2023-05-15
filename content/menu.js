@@ -1,16 +1,33 @@
-/*
-
-function getHTMLfile(category) {
-  const url = `../content/${category}.html`;
+document.addEventListener("DOMContentLoaded", function(){
+  const url = document.URL;
+  //const url = `../content/${category}.html`;
+  url+="all-contact"
   fetch(url)
-    .then((response) => response.text())
-    .then((data) => {
-      const categoryContent = document.getElementById("content");
-      console.log(categoryContent);
-      categoryContent.innerHTML = data;
+    .then((response) => response.json())
+    .then((json) => {
+      console.log(json);
+      var ul = document.getElementById(parent);
+      console.log(ul);
+
+      json.forEach(list => {
+        var li = document.createElement('li');
+        li.setAttribute('class', 'li-contact');
+        li.setAttribute('onclick', "location.href = /contact/" + list.id);
+
+        var button = document.createElement('button');
+        button.setAttribute('class', 'buttonContact');
+
+        ul.appendChild(li);
+        li.appendChild(button);
+
+        button.appendChild(document.createElement('p').innerHTML(list.Prenom + " " + list.Nom));
+        button.appendChild(document.createElement('p').innerHTML(list.entreprise));
+        console.log(list.Prenom, list.Nom, list.entreprise);
+      });
     })
     .catch((error) => console.error(error));
-}
+});
+
 
 const menuItems = document.querySelector("#sidebarMenuInner");
 
@@ -27,4 +44,3 @@ document.getElementById("addUser").addEventListener("click", function (event) {
   console.log(9);
   getHTMLfile("addUser");
 });
-*/

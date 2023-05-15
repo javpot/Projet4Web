@@ -32,7 +32,7 @@ app.use(function (req, res, next) {
   next();
  });
 
-mongoose.connect("mongodb+srv://m001:m001@sandbox.gwwn6rs.mongodb.net/", { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect("mongodb://localhost:27017/DB", { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("Connected to the MongoDB database..."))
   .catch(error => console.log("Failed to connect to the MongoDB database:", error));
 
