@@ -17,7 +17,8 @@ const PersonneModel = mongoose.model("personne", personneSchema);
 
 app.use(express.static(__dirname + '/'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }))
+app.use("/content/menu.js", express.static('js'));
+app.use(express.urlencoded({ extended: true }));
 
 app.get('/', async (request, response) => {
   console.log(`request recu pour  ${request.url}`);
