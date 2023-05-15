@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 .then(res => res.text())
                 .then(res => {
                   console.log(res)
-                  this.location.reload()
+                  document.location.reload()
                 })
               })
 
