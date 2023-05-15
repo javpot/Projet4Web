@@ -26,8 +26,8 @@ app.get('/', async (request, response) => {
        console.log(request.body)
 
        const indexPath = path.join(__dirname,"../content/Acceuil.html")
-       if(req.url =="/"){
-           res.sendFile(indexPath)
+       if(request.url =="/"){
+           response.sendFile(indexPath)
        }
 
    }
