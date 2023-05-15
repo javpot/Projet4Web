@@ -129,11 +129,13 @@ app.delete("/contactDelete/:phone", async (request, response) => {
   }
 });
 
-app.get('/detailedContact', async (request, response) => {
-  console.log(`request recu pour  ${request.url}`);
-  const filePath = path.join(__dirname, '/content/detailedContact.html')
-  response.sendFile(filePath);
-});
+app.post("/recherche", async (req, res) => {
+  let payload = req.body.payload.trim()
+  let recherche = await Contact.find({ prenom: { $regex: payload, $options: 'i' } }).exec();
+
+  recherche = recherche.slice(0, 10)
+  res.send({ payload: recherche })
+})
 
 app.listen(PORT, () => {
   console.log(`Serveur en écoute sur le port ${PORT}...`);
