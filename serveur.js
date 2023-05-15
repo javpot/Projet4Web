@@ -13,12 +13,40 @@ const personneSchema = new mongoose.Schema({
   entreprise: String,
   adresse: String
 });
+const PersonneModel = mongoose.model("personne", personneSchema);
 
 app.use(express.static(__dirname + '/'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }))
 
-app.get('/', (request, response) => {
+app.get('/', async (request, response) => {
   console.log(`request recu pour  ${request.url}`);
-  router.routeRequest(request, response);
+  await router.routeRequest(request, response);
+  try {
+    let result = await PersonneModel.find().exec();
+
+    // Le probleme c que le html load pas avant cette cmd. c pr ca il faut envoyer les json et
+    // faire cette commande dans fileHandler
+    var ul = document.getElementById("ul-contact");
+
+    result.forEach(list => {
+      var li = document.createElement('li');
+      li.setAttribute('class', 'li-contact');
+      li.setAttribute('onclick', "location.href = /contact/" + list.id);
+
+      var button = document.createElement('button');
+      button.setAttribute('class', 'buttonContact');
+
+      ul.appendChild(li);
+      li.appendChild(button);
+
+      button.appendChild(document.createElement('p').innerHTML(list.Prenom + " " + list.Nom));
+      button.appendChild(document.createElement('p').innerHTML(list.entreprise));
+    });
+  }
+  catch (error) {
+    console.log(error);
+  }
 });
 
 app.use(function (req, res, next) {
@@ -28,14 +56,10 @@ app.use(function (req, res, next) {
   res.setHeader('Access-Control-Allow-Credentials', true);
   next();
 });
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }))
 
-mongoose.connect("mongodb://127.0.0.1:27017/DB", { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect("mongodb+srv://m001:m001@sandbox.gwwn6rs.mongodb.net/", { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("Connected to the MongoDB database..."))
   .catch(error => console.log("Failed to connect to the MongoDB database:", error));
-
-const PersonneModel = mongoose.model("personne", personneSchema);
 
 // Create Contact
 app.get("/addContact/", async (request, response) => {
@@ -64,17 +88,6 @@ app.post('/contact', async (request, response) => {
   }
 });
 
-// Obtenir la liste des enregistrements contenus dans la DB (READ) 
-app.get('/contacts', async (request, response) => {
-  console.log("Route GET /contacts");
-  try {
-    let result = await PersonneModel.find().exec();
-    response.send(result);
-  }
-  catch (error) {
-    response.status(500).send(error);
-  }
-});
 // Obtenir un enregistrement en particulier dans la DB (READ)
 app.get("/contact/:id", async (request, response) => {
   console.log("Route GET /contact/:id");
@@ -87,7 +100,7 @@ app.get("/contact/:id", async (request, response) => {
   }
 });
 // Mettre à jour un enregistrement dans la DB (UPDATE)
-app.put("/contact/:id", async (request, response) => {
+app.put("/contactUpdate/:id", async (request, response) => {
   console.log("Route PUT /contact/:id");
   console.log(request.body);
   try {
@@ -100,12 +113,12 @@ app.put("/contact/:id", async (request, response) => {
     response.status(500).send(error);
   }
 });
+
 // Effacer un enregistrement (EFFACER)
-app.delete("/contact/:id", async (request, response) => {
+app.delete("/contactDelete/:id", async (request, response) => {
   try {
     let result = await PersonneModel.deleteOne({
-      _id:
-        request.params.id
+      _id: request.params.id
     }).exec();
     response.send(result);
   }

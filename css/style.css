@@ -311,13 +311,13 @@ input[type="checkbox"]:checked~.sidebarIconToggle>.diagonal.part-2 {
   width: 150%;
   list-style: none;
   list-style-type: none;
-  height: 75%;
+  height: max-content;
   display: flex;
 }
 
 .buttonContact{
   width: 150%;
-  height: 75%;
+  height: max-content;
   border: none;
   box-shadow: #303245;
   background-color: rgba(106, 137, 217, 0.756);
