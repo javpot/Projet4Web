@@ -1,11 +1,11 @@
 document.addEventListener("DOMContentLoaded", function(){
   const url = document.URL;
   //const url = `../content/${category}.html`;
-  url+="all-contact"
+  url+="contacts"
   fetch(url)
     .then((response) => response.json())
     .then((json) => {
-      console.log(json);
+      console.log("HELLO from albani!!!!!!!!!!!!!!"+json);
       var ul = document.getElementById(parent);
       console.log(ul);
 
