@@ -29,38 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         //recherche 
         let barreRecherche = document.getElementById("searchBar")
-        barreRecherche.addEventListener("input", (i) => {
-          let urlRecherche = document.URL + "recherche/"
-          let match = i.target.value.match(/^[a-zA-Z ]/)
-          let match2 = i.target.value.match(/\s/)
-          let sidebarLi = document.getElementById("sidebarMenuInner")
-          if (match2[0] === e.target.value) {
-            sidebarLi.innerHTML = '';
-            return;
-          }
-          if (match[0] === i.target.value) {
-            fetch(urlRecherche, {
-              method: "POST",
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ payload: i.target.value })
-
-            }).then(res => res.json()).then(data => {
-              let payload = data.payload
-              console.log(payload)
-              sidebarLi.innerHTML = ''
-              if (payload.length < 1) {
-                sidebarLi.innerHTML = "<li>Aucun resultat</li>"
-              }
-              payload.forEach((item, index) => {
-                if (index > 0)
-                  sidebarLi.innerHTML += '<li>'
-                sidebarLi.innerHTML += <li>${item.prenom}</li>
-              })
-
-            })
-
-          }
-        })
+        barrelRecherche.addEventListener("input")
 
         // single person
         button.addEventListener("click", () => {
@@ -82,13 +51,13 @@ document.addEventListener("DOMContentLoaded", function () {
               button.innerHTML = 'Close'
               supprimer.innerHTML = 'Supprimer'
               // delete persone
-              supprimer.addEventListener("click", function () {
-                fetch(urlDeletePerson, { method: "DELETE" })
-                  .then(res => res.text())
-                  .then(res => {
-                    console.log(res)
-                    document.location.reload()
-                  })
+              supprimer.addEventListener("click", function() {
+                fetch(urlDeletePerson, {method: "DELETE"})
+                .then(res => res.text())
+                .then(res => {
+                  console.log(res)
+                  document.location.reload()
+                })
               })
               // close the singlediv
 
