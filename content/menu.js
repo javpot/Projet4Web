@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .then((response) => response.json())
         .then((json) => {
           console.log("HELLO from albani!!!!!!!!!!!!!!"+json);
-          var ul = document.getElementById(parent);
+          var ul = document.getElementById("ul-contact");
           console.log(ul);
     
           json.forEach(list => {
