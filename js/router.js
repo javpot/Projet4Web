@@ -1,5 +1,9 @@
 const fileHandler = require('./fileHandler');
 
+function jsonHandler(json, parent) {
+    fileHandler.sendJson(json, parent);
+}
+
 function routeRequest(request, response) {
     const pathRequest = request.url;
     const pathParts = pathRequest.split('/');
@@ -7,7 +11,6 @@ function routeRequest(request, response) {
 
     switch (pathType) {
         case 'root':
-            console.log(55);
             fileHandler.sendContent('/content/Acceuil.html', response);
             break;
         case 'img':
@@ -33,7 +36,8 @@ function getPathType(pathPart) {
         'img': 'img',
         'css': 'css',
         'js': 'js',
-        'content': 'content'
+        'content': 'content',
+        'json': 'json'
     };
     return types[pathPart] || 'unknown';
 }
@@ -52,4 +56,4 @@ function send404(response) {
     response.end();
 }
 
-module.exports = { routeRequest };
+module.exports = { routeRequest, jsonHandler };

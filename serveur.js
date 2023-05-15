@@ -21,41 +21,16 @@ app.use(express.urlencoded({ extended: true }))
 
 app.get('/', async (request, response) => {
   console.log(`request recu pour  ${request.url}`);
-  await router.routeRequest(request, response);
-  try {
-    let result = await PersonneModel.find().exec();
-
-    // Le probleme c que le html load pas avant cette cmd. c pr ca il faut envoyer les json et
-    // faire cette commande dans fileHandler
-    var ul = document.getElementById("ul-contact");
-
-    result.forEach(list => {
-      var li = document.createElement('li');
-      li.setAttribute('class', 'li-contact');
-      li.setAttribute('onclick', "location.href = /contact/" + list.id);
-
-      var button = document.createElement('button');
-      button.setAttribute('class', 'buttonContact');
-
-      ul.appendChild(li);
-      li.appendChild(button);
-
-      button.appendChild(document.createElement('p').innerHTML(list.Prenom + " " + list.Nom));
-      button.appendChild(document.createElement('p').innerHTML(list.entreprise));
-    });
-  }
-  catch (error) {
-    console.log(error);
-  }
+  router.routeRequest(request, response);
 });
 
 app.use(function (req, res, next) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-  res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content - Type, Accept");
+  res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   res.setHeader('Access-Control-Allow-Credentials', true);
   next();
-});
+ });
 
 mongoose.connect("mongodb+srv://m001:m001@sandbox.gwwn6rs.mongodb.net/", { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("Connected to the MongoDB database..."))
@@ -88,6 +63,20 @@ app.post('/contact', async (request, response) => {
   }
 });
 
+// Obtenir la liste des enregistrements contenus dans la DB (READ)
+app.get('/contacts', async (request, response) => {
+  console.log("Route GET /contacts");
+  try {
+    const filePath = path.join(__dirname, '/content/contacts.html')
+    response.sendFile(filePath);
+    let result = await PersonneModel.find().exec();
+    const jsonContent = JSON.stringify(result);
+    router.jsonHandler(jsonContent, "ul-contact");
+  } catch (error) {
+    response.status(500).send(error);
+  }
+});
+
 // Obtenir un enregistrement en particulier dans la DB (READ)
 app.get("/contact/:id", async (request, response) => {
   console.log("Route GET /contact/:id");
@@ -99,6 +88,7 @@ app.get("/contact/:id", async (request, response) => {
     response.status(500).send(error);
   }
 });
+
 // Mettre à jour un enregistrement dans la DB (UPDATE)
 app.put("/contactUpdate/:id", async (request, response) => {
   console.log("Route PUT /contact/:id");
@@ -125,6 +115,12 @@ app.delete("/contactDelete/:id", async (request, response) => {
   catch (error) {
     response.status(500).send(error);
   }
+});
+
+app.get('/detailedContact', async (request, response) => {
+  console.log(`request recu pour  ${request.url}`);
+  const filePath = path.join(__dirname, '/content/detailedContact.html')
+  response.sendFile(filePath);
 });
 
 app.listen(PORT, () => {

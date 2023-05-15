@@ -1,3 +1,5 @@
+/*
+
 function getHTMLfile(category) {
   const url = `../content/${category}.html`;
   fetch(url)
@@ -25,3 +27,4 @@ document.getElementById("addUser").addEventListener("click", function (event) {
   console.log(9);
   getHTMLfile("addUser");
 });
+*/

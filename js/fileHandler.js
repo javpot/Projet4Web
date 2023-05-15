@@ -73,6 +73,28 @@ function sendContent(requestedPath, response) {
     }
 }
 
+function sendJson(json, parent) {
+    console.log(json);
+    var ul = document.getElementById(parent);
+    console.log(ul);
+
+    json.forEach(list => {
+      var li = document.createElement('li');
+      li.setAttribute('class', 'li-contact');
+      li.setAttribute('onclick', "location.href = /contact/" + list.id);
+
+      var button = document.createElement('button');
+      button.setAttribute('class', 'buttonContact');
+
+      ul.appendChild(li);
+      li.appendChild(button);
+
+      button.appendChild(document.createElement('p').innerHTML(list.Prenom + " " + list.Nom));
+      button.appendChild(document.createElement('p').innerHTML(list.entreprise));
+      console.log(list.Prenom, list.Nom, list.entreprise);
+    });
+}
+
 function getContentTypeByExtension(extension) {
     const contentTypes = {
         '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.png': 'image/png',
@@ -83,4 +105,4 @@ function getContentTypeByExtension(extension) {
     return contentTypes[extension] || 'application/octet-stream';
 }
 
-module.exports = { sendImage, sendCSS, sendContent };
+module.exports = { sendImage, sendCSS, sendContent, sendJson };
