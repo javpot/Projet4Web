@@ -60,6 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
                   singlePersonDiv.removeChild(singlePersonDiv.lastChild);
                 }
               })
+              singlePersonDiv.append(supprimer)
               singlePersonDiv.append(button)
             })
         })
