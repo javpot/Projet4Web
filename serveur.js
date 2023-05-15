@@ -3,9 +3,10 @@ const path = require('path');
 const PORT = 6161;
 const express = require('express');
 const mongoose = require("mongoose");
+const { createRequire } = require('module');
 const app = express();
 const personneSchema = new mongoose.Schema({
-  id: String,
+  _id: String,
   nom: String,
   prenom: String,
   email: String,
@@ -89,13 +90,11 @@ app.get('/all-contact', async (request, response) => {
 });
 
 // Obtenir un enregistrement en particulier dans la DB (READ)
-app.get("/contact/:id", async (request, response) => {
-  console.log("Route GET /contact/:id");
+app.get("/contact/:_id", async (request, response) => {
+  console.log("Route GET /contact/:_id");
   try {
-    let result = await PersonneModel.find().exec();
-    for(let i = 0; i < result.length; i++)
-      if(i+1==request.params.id)
-        response.send(result[i]);
+    let result = await PersonneModel.findOne({_id:request.params._id}).exec();
+    response.send(result);
   }
   catch (error) {
     response.status(500).send(error);
