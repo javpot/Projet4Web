@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
   //const url = `../content/${category}.html`;
   url += "all-contact";
   console.log(url)
+  /*
   fetch(url)
     .then(response => {
       return response.json()
@@ -27,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
         content.append(cardContact);
       }
       )
-      /*
+      */
       fetch(url)
         .then((response) => response.json())
         .then((json) => {
@@ -52,6 +53,5 @@ document.addEventListener("DOMContentLoaded", function () {
           });
         })
         .catch((error) => console.error(error));
-        */
     })
 });
