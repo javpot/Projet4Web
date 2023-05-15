@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
             ul.appendChild(li);
 
             button.append(document.createElement('p').innerHTML = list.prenom + " " + list.nom);
-            button.append(document.createElement('p').innerHTML = list.entreprise + " ");
+            button.append(document.createElement('p').innerHTML = "\n" + list.entreprise);
             console.log(list.prenom, list.nom, list.entreprise);
           });
         })

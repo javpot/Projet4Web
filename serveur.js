@@ -73,19 +73,16 @@ app.post('/contact', async (request, response) => {
   }
 });
 
-app.get("/all-contact", (req,res)=>{
+app.get("/all-contact1", (req,res)=>{
   PersonneModel.find().then(result =>{res.send(result)})     .catch(error=>{         console.log("error")     })
 })
 
 // Obtenir la liste des enregistrements contenus dans la DB (READ)
-app.get('/contacts', async (request, response) => {
+app.get('/all-contact', async (request, response) => {
   console.log("Route GET /contacts");
   try {
-    const filePath = path.join(__dirname, '/content/contacts.html')
-    response.sendFile(filePath);
     let result = await PersonneModel.find().exec();
-    const jsonContent = JSON.stringify(result);
-    router.jsonHandler(jsonContent, "ul-contact");
+    response.send(result);
   } catch (error) {
     response.status(500).send(error);
   }
@@ -95,8 +92,10 @@ app.get('/contacts', async (request, response) => {
 app.get("/contact/:id", async (request, response) => {
   console.log("Route GET /contact/:id");
   try {
-    let person = await PersonneModel.findById(request.params.id).exec();
-    response.send(person);
+    let result = await PersonneModel.find().exec();
+    for(let i = 0; i < result.length; i++)
+      if(i+1==request.params.id)
+        response.send(result[i]);
   }
   catch (error) {
     response.status(500).send(error);
