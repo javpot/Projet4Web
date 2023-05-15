@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         //recherche 
         let barreRecherche = document.getElementById("searchBar")
-        barrelRecherche.addEventListener("input", (i) => {
+        barreRecherche.addEventListener("input", (i) => {
           let urlRecherche = document.URL + "recherche/"
           let match = i.target.value.match(/^[a-zA-Z ]/)
           let match2 = i.target.value.match(/\s/)
